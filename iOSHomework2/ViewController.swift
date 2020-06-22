@@ -19,9 +19,10 @@ class ViewController: UIViewController {
         let member = nameTextField.text!
         
         // MARK: -   1️⃣ تحت الخط membersNamesArray إلي المصفوفه memberقم بإضافة المتغير
+        membersNamesArray.append(member)
         
         
-        
+
         // MARK: -   النهاية
         
         nameTextField.text = ""
@@ -34,7 +35,7 @@ class ViewController: UIViewController {
         
         // MARK: -  4️⃣ functionCall داخل المتغير  secretNameLetter قم باستدعاء الدالة
         
-        var functionCall = ""
+        var functionCall = secretNameLetter(membersNamesArray: membersNamesArray)
         
         
         // MARK: -   النهاية
@@ -52,7 +53,7 @@ class ViewController: UIViewController {
         
         // MARK: -  5️⃣ functionCall داخل المتغير  secretNameEmoji قم باستدعاء الدالة
         
-        var functionCall = ""
+        var functionCall = secretNametoEmoji(membersNamesArray: membersNamesArray)
         
         // MARK: -   النهاية
         
@@ -66,6 +67,19 @@ class ViewController: UIViewController {
     
     // MARK: - 2️⃣ تحت هذا الخط secretNameLetter قم بكتابة الداله
     
+   
+    func secretNameLetter(membersNamesArray:[String])->String{
+        
+     
+          var firstLetter = ""
+        
+        for i in 0..<membersNamesArray.count{
+            
+            firstLetter += membersNamesArray[i].prefix(1)
+        }
+        return firstLetter
+        
+    }
     
     // MARK: -   النهاية
     
@@ -74,11 +88,23 @@ class ViewController: UIViewController {
     
     
     // MARK: - 3️⃣ تحت هذا الخط secretNameEmoji قم بكتابة الداله
-    
-    
+    func secretNametoEmoji(membersNamesArray:[String])->String{
+        var letters = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","P","Q","R","S","T","U","V","W","X","Y","Z"]
+        var emojis = ["😍","🙁","😁","😆","😛","😎","🤪","🤓","🥺","🤯","😕","😞","🥰","😡","🥶","🤭","🤫","🙄","🤗","😭","🤬","🤥","🤐","😷","🤒","🙃"]
+        var finalstring = ""
+        var firstletter = ""
+        for i in membersNamesArray{
+            firstletter = String(i.prefix(1))
+            for j in 0..<letters.count{
+                if firstletter == letters[j]{
+                    finalstring += emojis[j]
+                }
+            }
+        }
+        return finalstring
+                }
     // MARK: -   النهاية
     
     
     
 }
-
